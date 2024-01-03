@@ -1,0 +1,14 @@
+{
+  "name": "node_retail_scheduling_lib",
+  "version": "1.0.0",
+  "description": "A simple library backend to support the retail scheduling application. Primarily being used to learn node development (and typescript). ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-jest": "^29.1.1"
+  }
+}

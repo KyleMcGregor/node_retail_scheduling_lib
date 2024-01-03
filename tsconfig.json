@@ -1,0 +1,21 @@
+{
+    "module": "ES6",
+    "compileOnSave": true, 
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "alwaysStrict": true, 
+        "noImplicitReturns": true,
+        "outDir": "build", 
+        "module": "ES6"
+    },
+
+    "files":[
+        "src/index.ts", 
+        "src/scheduler.ts", 
+        "src/employee.ts", 
+        "src/shift.ts", 
+        "src/ruleset.ts",
+        "src/rule_base.ts"
+    ]
+}
