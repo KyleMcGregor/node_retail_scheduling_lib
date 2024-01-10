@@ -9,6 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
     "ts-jest": "^29.1.1"
+  },
+  "dependencies": {
+    "@types/mssql": "^9.1.4",
+    "mssql": "^10.0.1"
   }
 }

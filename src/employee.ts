@@ -1,5 +1,6 @@
+// all of the non null fields stored in the base interface
+
 interface IEmployeeBase {
-    name: string;
     age: number;
     id: number;
     first_name: string;
@@ -7,15 +8,17 @@ interface IEmployeeBase {
     hired_date: Date;
 }
 
+
+// all of the nullable fields stored in the details interface
 interface IEmployeeDetails {
-    status: string;
-    department: string;
-    position: string;
-    salary: number;
-    manager: Employee;
+    status: string | null;
+    department: string| null;
+    position: string| null;
+    salary: number| null;
+    manager: Employee| null;
 }
 
-interface IEmployee extends IEmployeeBase, IEmployeeDetails { }
+export interface IEmployee extends IEmployeeBase, IEmployeeDetails { }
 
 export class EmployeeBuilder {
     private employee: IEmployee;
@@ -24,22 +27,25 @@ export class EmployeeBuilder {
         this.employee = {} as IEmployee;
     }
 
-    setName(name: string): EmployeeBuilder {
-        this.employee.name = name;
-        return this;
-    }
-
     setAge(age: number): EmployeeBuilder {
+        if(age < 0) throw new Error("Age cannot be negative.");
+        if(age > 120) throw new Error("Age cannot be greater than 120.");
+
         this.employee.age = age;
         return this;
     }
 
     setId(id: number): EmployeeBuilder {
+        // TODO: validate id, should this be a round trip to the database?
+        // no, the database should validate the id.
+        // im just the in memory representation of the employee.
         this.employee.id = id;
         return this;
     }
 
     setFirstName(firstName: string): EmployeeBuilder {
+        if(firstName.length < 1) throw new Error("First name cannot be empty.");
+        if(firstName.length > 50) throw new Error("First name cannot be longer than 50 characters."); 
         this.employee.first_name = firstName;
         return this;
     }
@@ -85,38 +91,22 @@ export class EmployeeBuilder {
 }
 
 export class Employee {
-    private _name: string;
-    public get name(): string {
-        return this._name;
-    }
-    public set name(value: string) {
-        this._name = value;
-    }
-    private _age: number;
-
-    public get age(): number {
-        return this._age;
+    _age: number;
+    private _id: number;
+    public get id(): number {
+        return this._id;
     }
 
-    public set age(value: number) {
-        if (value < 0) {
-            throw new Error("Age cannot be negative.");
-        }
-        this._age = value;
-    }
-
-    _id: number;
     _first_name: string;
     _last_name: string;
     _hired_date: Date;
-    _status: string;
-    _department: string;
-    _position: string;
-    _salary: number;
-    _manager?: Employee;
+    _status: string | null;
+    _department: string | null;
+    _position: string | null;
+    _salary: number | null;
+    _manager: Employee | null;
 
     constructor(employee: IEmployee) {
-        this._name = employee.name;
         this._age = employee.age;
         this._id = employee.id;
         this._first_name = employee.first_name;

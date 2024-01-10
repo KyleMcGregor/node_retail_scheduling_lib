@@ -11,11 +11,12 @@
     },
 
     "files":[
-        "src/index.ts", 
-        "src/scheduler.ts", 
-        "src/employee.ts", 
-        "src/shift.ts", 
-        "src/ruleset.ts",
-        "src/rule_base.ts"
+        "src/Scheduler.ts", 
+        "src/Employee.ts", 
+        "src/Shift.ts", 
+        "src/RuleSet.ts",
+        "src/RuleBase.ts", 
+        "src/Schedule.ts",
+        "src/RecurrenceRule.ts"
     ]
 }

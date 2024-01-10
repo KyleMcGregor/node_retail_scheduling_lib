@@ -1,0 +1,9 @@
+# BEGIN: Generate schedules
+schedules = [
+    # Add your schedules here
+    "Schedule 1",
+    "Schedule 2",
+    "Schedule 3",
+    # ...
+]
+# END: Generate schedules
